@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Mapa de Leaflet</title>   
+
+	<!-- Hoja de estilos CSS de Leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>	
+	
+	<!-- Biblioteca JS de Leaflet -->
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>	
+	
+	<!-- Complemento Leaflet-providers -->
+	<script src="js/leaflet-providers.js"></script>	
+	
+	<!-- Complemento Leaflet-choropleth -->
+	<script src="js/choropleth.js"></script>
+	
+	<!-- Hoja de estilos CSS adicionales -->
+	<link rel="stylesheet" href="css/estilos.css"/>	
+
+    <!-- En HTML: enlace a Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous" />
+
+    <!-- Enlace a biblioteca JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+    </script>	
+</head>
+<body style="text-align: justify;">
+	<!-- Elemento div para contener el mapa -->
+	<!-- Dos columnas -->
+	<!-- Columna Izquierda-->
+	<div class="row">
+		<div class="column left";>
+			
+			<!-- título -->
+			<h2 align="center", style="text-shadow: 0.1em 0.1em 0.15em #2faaff">
+				<em>Red Activa y Pasiva de Costa Rica RN-IGN</em>
+			</h2>
+			
+			<!-- Controles para seleccionar la capa de monumentos -->
+			<div align="center"; id="panel" style = "margin-left:0px; 
+										width: 700px;
+										height: 25px;
+										background-color:#e6f2fa;">
+						<label>Selecciona un tipo de Monumento</label>
+						<select id="tipo" onchange="estiloSelect()">
+						  <option value="PLACA" >Placa</option>
+						  <option value="PIN">Pin</option>
+						  <option value="TODOS">Todos</option>
+						</select>
+			</div>	
+			
+			<!-- agregar el mapa -->
+			<div id="mapid"></div>
+			
+			<!-- Controles para la opacidad de la capa de DEM -->
+			<h5>Opacidad de la capa DEM: <span id="span-opacity">0.5</span></h5>
+			<input type='range' id='sld-opacity' min='0' max='1' step='0.1' value='0.5' onchange='updateOpacity();'>	
+		</div>
+		
+		
+		
+		<!-- Columna derecha-->
+		<div class="column right";>
+			<h3 style="text-shadow: 0.1em 0.1em 0.15em #b3b3b3"><strong>Descripción</strong></h3> 
+			<p>Con la incorporación de las técnicas satelitales en el
+			establecimiento de vértices geodésicos <em>(red pasiva)</em>, se notan las ventajas que
+			ofrece el uso de estas tecnologías en el establecimiento y mantenimiento
+			de los marcos de referencia mundiales, regionales y nacionales; por
+			ejemplo aplicado al caso de Costa Rica, la definición y el
+			mantenimiento del sistema de referencia CR05, el cual fue definido
+			completamente por mediciones con metodologías GPS.<br>
+			</p>
+			<p>
+			Entre las ventajas de implementar metodologías GNSS en
+			los trabajos topográficos y geodésicos, está la posibilidad de establecer
+			estaciones de medición continua <em>(red activa)</em>, las cuales se convierten en una
+			valiosa herramienta para gran cantidad de aplicaciones, por ejemplo,
+			georreferenciación de levantamientos con diversos fines, aplicación
+			en trabajos de topografía aplicada, también se convierten en
+			una herramienta para satisfacer los exigentes requerimientos
+			de aplicaciones científicas.
+			</p>
+			<p>Para cumplir sus objetivos, se requiere dar a la estación la
+			mejor calidad posible en cuatro elementos: condiciones óptimas en
+			los alrededores del sitio donde se colocará la antenas, que el
+			monumento sobre el cual se instalará la antena sea lo mas estable
+			posible, que el equipo por utilizar sea de calidad geodésica, para 
+			lo cual se tiene:
+			</p>
+			<p>Características de la antena de la Red Activa</p>
+			<img src="images/antena.JPG"
+				 alt="International GNSS Service"
+				 width="450"
+				 height="250">
+			<img src="images/RIDC 2019-11-19.jpeg"
+				 alt="Antena Trimble, RIDC Costa Rica"
+				 width="250"
+				 height="250">	
+			<p>Monumentación de la Red Pasiva</p>	
+			<img src="images/Buvis.jpeg"
+				 alt="Hito Buvis, Costa Rica"
+				 width="600"
+				 height="300">
+			<p>La importacia de contar con la Red Pasiva es que en este datum 
+			está materializado a través de la denominada Red Geodésica Nacional 
+			de Referencia Horizontal CR05 de Primer Orden.
+			</p>			
+		</div>
+    </div>
+	
+	<!-- Código principal en JS -->
+	<script src="js/scripts.js"></script>	
+</body>
+</html>
